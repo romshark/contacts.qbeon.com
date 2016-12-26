@@ -1,0 +1,158 @@
+@mixin small
+	@media only screen and (max-width: 608px)
+		@content
+
+@mixin full
+	@media only screen and (min-width: 609px)
+		@content
+
+@mixin transition($transition-property, $time, $method)
+	-webkit-transition: $transition-property $time $method
+	-moz-transition: $transition-property $time $method
+	-ms-transition: $transition-property $time $method
+	-o-transition: $transition-property $time $method
+	transition: $transition-property $time $method
+
+@mixin default_transition
+	+transition(all, 0.2s, cubic-bezier(0.250, 0.460, 0.450, 0.940))
+
+@mixin selectable($method)
+	-webkit-touch-callout: $method
+	-webkit-user-select: $method
+	-khtml-user-select: $method
+	-moz-user-select: $method
+	-ms-user-select: $method
+	user-select: $method
+
+@font-face
+	font-family: segoe
+	src: url(fonts/segoe.ttf)
+
+@font-face
+	font-family: audiowide
+	src: url(fonts/audiowide.ttf)
+
+.center-container
+	position: relative
+	height: 100%
+	text-align: center
+	+selectable(none)
+
+.center-container:before
+	content: ''
+	display: inline-block
+	height: 100%
+	vertical-align: middle
+
+.centered
+	display: inline-block
+	vertical-align: middle
+
+.hide-small
+	+small
+		display: none
+
+.hide-full
+	+full
+		display: none
+
+html, body
+	margin: 0px
+	font-family: segoe
+	width: 100%
+	height: 100%
+	background-color: rgb(245,245,245)
+
+p, h1, h2
+	margin: 0px
+
+a
+	text-decoration: none
+
+.card
+	position: relativef
+	text-align: center
+	box-sizing: border-box
+	width: 22rem
+	box-sizing: border-box
+	overflow: auto
+	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)
+	border-radius: .5rem
+	overflow: hidden
+	+selectable(text)
+	+small
+		position: absolute
+		width: calc(100% - 2rem)
+		left: 0rem
+		top: 0rem
+		margin: 1rem
+
+.header
+	background-repeat: no-repeat
+	background-size: cover
+	background-position: center
+	height: 22rem
+	color: black
+
+.contact-data
+	padding: 2rem
+	padding-top: 1rem
+	background-color: #FFF
+	.name, .position
+		font-size: 1.6rem
+		font-weight: normal
+		text-align: left
+	.position
+		font-size: 1.1rem
+		padding-top: .2rem
+		text-align: left
+		font-weight: normal
+		a
+			cursor: pointer
+			font-family: audiowide
+			color: inherit
+			+default_transition
+	.position:hover
+		a
+			color: #619eff
+
+	ul
+		list-style: none
+		margin: 0px
+		padding: 0px
+		text-align: left
+		padding-top: 2rem
+		cursor: default
+		li
+			width: 2rem
+			height: 2rem
+			display: inline-block
+			color: #AAA
+			margin-right: .5rem
+			cursor: pointer
+			+default_transition
+			a
+				color: inherit
+			svg
+				width: 2rem
+				height: 2rem
+		li:hover
+			color: #619eff
+
+.field
+	display: block
+	padding-top: 1rem
+	text-align: left
+	cursor: pointer
+	.name
+		color: #AAA
+		font-size: 1rem
+	.value
+		padding-top: .2rem
+		font-size: 1.1rem
+		color: black
+		+default_transition
+
+.field:hover
+	.value
+		color: #619eff
