@@ -1,9 +1,9 @@
 @mixin small
-	@media only screen and (max-width: 608px)
+	@media only screen and (max-width: 380px)
 		@content
 
 @mixin full
-	@media only screen and (min-width: 609px)
+	@media only screen and (min-width: 381px)
 		@content
 
 @mixin transition($transition-property, $time, $method)
@@ -79,6 +79,8 @@ a
 	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)
 	border-radius: .5rem
 	overflow: hidden
+	margin-top: 1rem
+	margin-bottom: 1rem
 	+selectable(text)
 	+small
 		position: absolute
